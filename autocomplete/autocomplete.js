@@ -1,5 +1,4 @@
 (function (global, undefined) {
-
     // Search Wikipedia for a given term
     function searchWikipedia(term) {
         var cleanTerm = global.encodeURIComponent(term);
@@ -39,7 +38,6 @@
         });
 
         searcher.subscribe(function (data) {
-
             // Append the results
             clearChildren(results);
 
@@ -52,7 +50,6 @@
                 results.appendChild(li); 
             }
         }, function (error) {
-
             // Handle any errors
             clearChildren(results);
 
@@ -61,7 +58,5 @@
             results.appendChild(li);
         });
     }
-
     main();
-
 }(window));
