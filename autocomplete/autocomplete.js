@@ -35,12 +35,12 @@
         .switchLatest() // Ensure no out of order results
         .where(function (data) {
             return data.length === 2; // Where we have data
+        })
+        .doAction(function(){
+        	clearChildren(results);  // clear previous results as soon as response with enough data arrives
         });
 
         searcher.subscribe(function (data) {
-            // Append the results
-            clearChildren(results);
-
             var res = data[1];
 
             var i, len, li;
@@ -50,9 +50,6 @@
                 results.appendChild(li); 
             }
         }, function (error) {
-            // Handle any errors
-            clearChildren(results);
-
             var li = document.createElement('li');
             li.innerHTML = 'Error: ' + error;
             results.appendChild(li);
